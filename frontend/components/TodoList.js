@@ -2,6 +2,10 @@ import React from 'react'
 import Todo from "./Todo"
 
 export default class TodoList extends React.Component {
+  constructor(props) {
+    super(props);
+    
+  }
   render() {
     return (
       <div>
@@ -9,7 +13,7 @@ export default class TodoList extends React.Component {
         TodoList
       </div>
       <Todo />
-      
+
       </div>
     )
   }
