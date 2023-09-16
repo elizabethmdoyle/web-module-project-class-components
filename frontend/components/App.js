@@ -2,47 +2,48 @@ import React from 'react'
 import Form from "./Form"
 import TodoList from './TodoList'
 
-const todo = [
+//another way to incremet ids instead of Date.now() - in the commented out addTodo
+//would be to initialize the id variable at 0, and then increment a variable that will increment based on previous todos
+
+let id = 0;
+let getId = () => ++id
+
+const initialTodos = [
   {
-    id: 1,
-    item: "New Todo", 
+    id: getId(),
+    item: "Get dressed", 
     completed: false
   },
   {
-    id: 2,
-    item: "New Todo", 
+    id: getId(),
+    item: "Wake up", 
     completed: false
   }, 
   {
-    id: 3,
-    item: "New Todo", 
+    id: getId(),
+    item: "Learn React", 
     completed: false
-  }, 
-  {
-    id: 4,
-    item: "New Todo", 
-    completed: false
-  }, 
+  }
 ];
 
-console.log(todo, "app")
+console.log(initialTodos, "app")
 
 export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todo: todo
+      todos: initialTodos
     }
   }
 
   addTodo = (e, todo) => {
     e.preventDefault();
     const newTodo = {
-      id: Date.now(),
+      id: getId(),
       item: todo, 
       completed: false
     }
-    this.setState({...this.state, todo: [...this.state.todo, newTodo]})
+    this.setState({...this.state, todos: [...this.state.todos, newTodo]})
 
   }
 
@@ -64,7 +65,7 @@ export default class App extends React.Component {
         <div>
           Todo App
         </div>
-        <TodoList todo={this.state.todo} />
+        <TodoList todos={this.state.todos} />
         <Form addTodo={this.addTodo} />
         <button >Clear Completed</button>
       </div>
