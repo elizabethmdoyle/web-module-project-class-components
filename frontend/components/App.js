@@ -12,7 +12,7 @@ const initialTodos = [
   {
     id: getId(),
     item: "Get dressed", 
-    completed: false
+    completed: true
   },
   {
     id: getId(),
@@ -47,7 +47,16 @@ export default class App extends React.Component {
 
   }
 
-  
+  toggleTodo = (itemId) => {
+    console.log(itemId)
+    this.setState({...this.state, todos: this.state.todos.map(item => {
+      if(itemId == item.id) {
+          return {...item, completed: !item.completed }
+      }
+      return item
+      })
+    })
+  }
   // clearCompleted = (e, item) => {
   //   e.preventDefault();
   //   if(item.completed === true) {
@@ -65,7 +74,7 @@ export default class App extends React.Component {
         <div>
           Todo App
         </div>
-        <TodoList todos={this.state.todos} />
+        <TodoList todos={this.state.todos} toggleTodo={this.toggleTodo} />
         <Form addTodo={this.addTodo} />
         <button >Clear Completed</button>
       </div>

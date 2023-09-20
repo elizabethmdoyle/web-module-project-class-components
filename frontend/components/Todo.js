@@ -4,10 +4,12 @@ import React from 'react'
 
 // const Todo = (props) => {
 
-//   console.log(props, "todo")  
+   
+
 // return (
 //   <div>
 //     Todo
+//     {console.log(props)}
 //   </div>
 // )
 // }
@@ -20,9 +22,13 @@ export default class Todo extends React.Component {
 
   //to show a todo 
   render() {
+     const {id, item, completed} = this.props.todo;
+     const {toggleTodo} = this.props;
+    console.log(this.props)
+
     return (
-      <div>
-        <p>{this.props.todos.item}</p>
+      <div onClick={() => {toggleTodo(id)}}>
+        <p>{item} {completed && '✓'}</p>
       </div>
     )
   }

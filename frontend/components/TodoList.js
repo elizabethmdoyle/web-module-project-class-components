@@ -26,14 +26,14 @@ export default class TodoList extends React.Component {
   render() {
     //destructured todo from the props object - props does not need super to be called in a React.component
     //cannot add this.props in the return statement, as only jsx elements can be renedred in the return statement
-    const { todos } = this.props;
+    const { todos, toggleTodo } = this.props;
     console.log(todos)
     return (
 
 
       <div>
         {todos.map(item => {
-          return <Todo key={todos.id} todo={todos.item} />
+          return <Todo key={todos.id} todo={item} toggleTodo={toggleTodo}/>
         })}
 
 
