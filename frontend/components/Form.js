@@ -30,7 +30,7 @@ export default class Form extends React.Component {
       <div>
         <form onSubmit={this.submitForm}>
           <input type="text" value={this.state.todo} onChange={this.handleChanges}></input>
-          <button >Add Todo</button>
+          <button onClick={() => {this.props.addTodo('todo testing')}} >Add Todo</button>
         </form>
         
       </div>
