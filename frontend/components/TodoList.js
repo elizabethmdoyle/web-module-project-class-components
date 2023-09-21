@@ -35,6 +35,7 @@ export default class TodoList extends React.Component {
         {todos.map(item => {
           return <Todo key={todos.id} todo={item} toggleTodo={toggleTodo}/>
         })}
+       <button clearCompleted={this.clearCompleted} >Clear Completed</button>
 
 
       </div>
